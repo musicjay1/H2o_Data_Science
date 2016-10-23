@@ -1,0 +1,15 @@
+skulls <- read.csv(file="challenge.csv", header=TRUE,sep=",")
+skulls$P2 <- NULL
+skulls$P5 <- NULL
+skulls$P6 <- NULL
+skulls$P11 <- NULL
+skulls$P12 <- NULL
+skulls$P13 <- NULL
+skulls$P16 <- NULL
+install.packages("partykit")
+library(partykit)
+octr <- ctree(response ~ .,skulls)
+server_room_skull <- data.frame(P1=1115,P3=748,P4=182,P7=178,P8=311,P9=756,P10=226,P14=48,P15=1009,P17=204,P18=593)
+predict(octr,newdata=server_room_skull,type="prob")
+plot(octr)
+
