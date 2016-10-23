@@ -21,7 +21,7 @@ A          B          C
 
 0.9166667 0.02777778 0.05555556
 
-As seen the one with pca gives better prediction( also one could compare the respective plots). As this is achieved with just one first level pca analysis probably there is a linear relationship between the independent variables and the dependent skull.
+As seen the one with pca gives better prediction( also one could compare the respective plots). As this is achieved with just one first level pca analysis probably there is a (some what) linear relationship between the independent variables and the dependent skull.
 Otherwise one needs to do more complex analysis with pcas.
 
 
