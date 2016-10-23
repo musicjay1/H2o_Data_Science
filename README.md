@@ -11,12 +11,14 @@ results:
 server_skull_predict1:predict(octr,newdata=server_room_skull,type="prob") gives: 
 
 A         B         C
+
 0.4444444 0.2222222 0.3333333
 
 server_skull_predict_withpca:
 predict(pca_octr,newdata=server_room_skull,type="prob") gives:  
 
 A          B          C
+
 0.9166667 0.02777778 0.05555556
 
 As seen the one with pca gives better prediction( also one could compare the respective plots). As this is achieved with just one first level pca analysis probably there is a linear relationship between the independent variables and the dependent skull.
