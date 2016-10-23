@@ -1,0 +1,29 @@
+skulls <- read.csv(file="challenge.csv", header=TRUE,sep=",")
+skulls$P2 <- NULL
+skulls$P5 <- NULL
+skulls$P6 <- NULL
+skulls$P11 <- NULL
+skulls$P12 <- NULL
+skulls$P13 <- NULL
+skulls$P16 <- NULL
+install.packages("partykit")
+library(partykit)
+skulls_res = skulls
+skulls_res$response <- NULL
+skulls_res_na=na.omit(skulls_res)
+cov_skulls = cov(skulls_res_na)
+res_eigen=eigen(cov_skulls)
+skulls_res_matrix=as.matrix(skulls_res_na)
+skulls_res_na_pca = skulls_res_matrix %*% res_eigen[2]$vectors
+testv = matrix(c(1115,748,182,178,311,756,226,48,1009,204,593),1,byrow=TRUE)
+ctestv= testv %*% res_eigen[2]$vectors
+df_skulls_res_na_pca <- as.data.frame(skulls_res_na_pca)
+skulls_na <- na.omit(skulls)
+df_skulls_na_pca <- cbind(skulls_na$response,df_skulls_res_na_pca)
+names(df_skulls_na_pca)[1] <- "response"
+pca_octr <- ctree(response ~ .,df_skulls_na_pca)
+server_room_skull <- data.frame(V1=ctestv[1],V2=ctestv[2],V3=ctestv[3],V4=ctestv[4],V5=ctestv[5],V6=ctestv[6],V7=ctestv[7],V8=ctestv[8],V9=ctestv[9],V10=ctestv[10],V11=ctestv[11])
+predict(pca_octr,newdata=server_room_skull,type="prob")
+
+
+
