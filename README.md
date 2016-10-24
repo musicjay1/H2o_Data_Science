@@ -32,6 +32,8 @@ predict(pca_octr,newdata=server_room_skull,type="prob") gives:
 
           A          B         C
  0.8717949 0.02564103 0.1025641
+ 
+ Each leaf in the tree for this model show a much higher probability for one of the 3 (A,B,C) than for the other 2. This is not so in the above two models. So most likely this model is the best.
 
 
 
